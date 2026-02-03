@@ -197,8 +197,27 @@ aggregated_lin_mod <- lm(coefficient_percentile ~ birthyear +
                 Betweenness_log +
                 Closeness_binary, data = combined_df)
 
+
 # Print summary of the model
 print(summary(aggregated_lin_mod))
+
+# Same model with random effect for author and dataset (= construction)
+library(lme4)
+
+aggregated_mixed_mod <- lmer(
+  coefficient_percentile ~ birthyear +
+    In.degree_log +
+    Out.degree_log +
+    Betweenness_log +
+    Closeness_binary +
+    (1 | Author) +
+    (1 | dataset),
+  data = combined_df,
+  REML = TRUE
+)
+
+print(summary(aggregated_mixed_mod))
+
 
 #### Visualization ####
 
