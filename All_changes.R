@@ -103,7 +103,7 @@ big_plot <- ggplot(big_coeff_data, aes(x = as.numeric(Decade),
                                        color = Changes)) +
   stat_smooth(method = "glm", se = TRUE, 
               method.args = list(family = binomial(link = "logit"))) +
-  labs(title = "Big Coefficients (>= 0.01)", x = "Decade", y = "Change") +
+  labs(title = "Changes with distinctive author coefficients", x = "Decade", y = "Change") +
   theme_minimal() + 
   theme(legend.position = "right")
 
@@ -112,7 +112,7 @@ small_plot <- ggplot(small_coeff_data, aes(x = as.numeric(Decade),
                                            color = Changes)) +
   stat_smooth(method = "glm", se = TRUE, 
               method.args = list(family = binomial(link = "logit"))) +
-  labs(title = "Small Coefficients (< 0.01)", x = "Decade", y = "Change") +
+  labs(title = "Changes where author coefficients are shrunk towards 0", x = "Decade", y = "Change") +
   theme_minimal() + 
   theme(legend.position = "right")
 
